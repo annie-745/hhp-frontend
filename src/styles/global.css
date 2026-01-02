@@ -1,10 +1,28 @@
-@import './theme.css';
+@import "./theme.css";
+
+/* ==============================
+   Base
+============================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: var(--color-dark-gray);
   margin: 0;
   background: var(--color-white);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 /* Typography */
@@ -12,18 +30,21 @@ h1 {
   font-size: 42px;
   font-weight: 800;
   color: var(--color-black);
+  margin: 0;
 }
 
 h2 {
   font-size: 32px;
   font-weight: 700;
   color: var(--color-black);
+  margin: 0;
 }
 
 h3 {
   font-size: 22px;
   font-weight: 700;
   color: var(--color-blue);
+  margin: 0;
 }
 
 p {
@@ -31,16 +52,18 @@ p {
   font-weight: 300;
   line-height: 1.7;
   color: var(--color-dark-gray);
+  margin: 0;
 }
 
+/* Layout helpers */
 .section {
   padding: 80px 0;
 }
 
 .container {
-  max-width: 1400px;
-  padding: 0 20px;
+  max-width: 1500px;
   margin: 0 auto;
+  padding: 0 80px;
 }
 
 /* Buttons */
@@ -55,7 +78,6 @@ p {
   display: inline-block;
 }
 
-/* Primary */
 .btn-primary {
   background: var(--color-blue);
   color: white;
@@ -65,11 +87,6 @@ p {
   background: #074a88;
 }
 
-.btn-primary:active {
-  background: #04315c;
-}
-
-/* Secondary */
 .btn-secondary {
   background: var(--color-white);
   border: 2px solid var(--color-blue);
@@ -80,21 +97,272 @@ p {
   background: #e8f1fa;
 }
 
-.btn-secondary:active {
-  background: #cdddf1;
+/* =========================
+   HHP Footer (WP-style)
+========================= */
+.hhpFooter {
+  background: #fff;
+  padding: 40px 24px 40px;
 }
 
-/* Disabled */
-.btn-disabled {
-  background: var(--color-light-gray);
-  color: var(--color-mid-gray);
-  cursor: not-allowed;
+.hhpFooterInner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 32px;        /* ✅ equal left & right gap */
+  display: grid;
+  grid-template-columns: 1.2fr 1px 1fr 1px 1.2fr;
+  gap: 48px;
+  align-items: start;
 }
 
-/* Footer */
-footer {
-  background: #f6f6f6;
-  padding: 40px 0;
-  margin-top: 60px;
+.hhpFooterCol {
+  padding: 0 6px;
+  width: 100%;
+}
+
+.hhpFooterDivider {
+  width: 1px;
+  background: #e5e5e5;
+  height: 100%;
+}
+
+.hhpFooterHeading {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0b5ea8;
+  margin: 6px 0 18px;
+}
+
+.hhpFooterSubheading {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 22px 0 12px;
+  color: #111;
+  text-align: center;
+}
+
+/* Left: donut */
+.hhpDonutWrap {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+}
+
+.hhpDonut {
+  display: block;
+}
+
+.hhpDonutLegend {
   font-size: 14px;
+  color: #111;
+  text-align: left;
+}
+
+.hhpLegendRow {
+  line-height: 1.25;
+}
+/* Donut % labels */
+.hhpDonutPct {
+  font-size: 10px;      /* smaller */
+  font-weight: 300;     /* not bold */
+  fill: #ffffff;        /* stays readable on color */
+  opacity: 0.95;
+}
+
+/* Bottom list under donut */
+.hhpFundsList {
+  margin-top: 14px;
+  display: grid;
+  gap: 6px;             /* spacing between lines */
+}
+
+.hhpFundsLine {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  font-size: 14px;
+  line-height: 1.2;
+  
+}
+
+.hhpFundsPct {
+  font-weight: 700;     /* only % slightly stronger (optional) */
+}
+
+.hhpFundsLbl {
+  font-weight: 400;
+}
+
+/* Matching colors */
+.hhpFundsPrograms { color: #1486ff; }
+.hhpFundsAdmin { color: #9ccf2b; }
+.hhpFundsFundraising { color: #f2c400; }
+
+/* Middle: About */
+.hhpFooterText {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #333;
+  margin: 0 0 14px;
+  text-align: left;
+}
+
+/* Candid */
+.hhpCandidLink {
+  display: block;
+  width: fit-content;
+  margin: 18px auto 0;
+}
+
+.hhpCandidBadge {
+  width: 120px;
+  height: 140px;
+  border: 4px solid #b9c7d3;
+  background: #e8eef4;
+  display: grid;
+  place-items: center;
+}
+
+.hhpCandidBadgeInner {
+  width: 92px;
+  height: 112px;
+  border: 4px solid #b9c7d3;
+  background: #fff;
+  padding: 10px 8px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  /* centers vertically inside inner box */
+  align-items: center;      /* centers horizontally */
+  text-align: center;
+
+  color: #111;
+  font-weight: 700;
+}
+
+.hhpCandidTop,
+.hhpCandidMid {
+  font-size: 12px;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.hhpCandidYear {
+  font-size: 14px;
+  line-height: 1.1;
+  margin: 6px 0 0;
+}
+
+.hhpCandidBottom {
+  font-size: 14px;
+  line-height: 1.1;
+  margin: 10px 0 0;
+}
+
+/* Right: socials */
+.hhpFooterRight {
+  text-align: center;
+}
+
+.hhpSocialRow {
+  display: flex;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.hhpSocialBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  text-decoration: none !important;
+  font-weight: 800;
+  color: #fff;
+  font-size: 18px;
+}
+
+.hhpSocialFb { background: #2f4f9a; }
+.hhpSocialX  { background: #000; font-size: 16px; }
+.hhpSocialIg { background: #c13584; font-size: 18px; }
+.hhpSocialIn { background: #0a66c2; font-size: 16px; }
+
+/* Quick links (THIS FIXES YOUR ONE-LINE ISSUE) */
+.hhpFooterLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.hhpFooterLink {
+  font-size: 14px;
+  color: #333;
+  text-decoration: none !important;
+}
+
+.hhpFooterLink:hover {
+  text-decoration: underline !important;
+}
+.hhpFooterColRight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* ⬅ centers children horizontally */
+  text-align: center;
+}
+/* prevent browser "visited purple" */
+.hhpFooterLink:visited {
+  color: #333;
+}
+
+/* Bottom */
+.hhpFooterBottom {
+  max-width: 1200px;
+  margin: 28px auto 0;
+  padding-top: 18px;
+  border-top: 1px solid #efefef;
+  color: #333;
+  font-size: 16px;
+}
+
+.hhpFooterBottom p {
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .hhpFooterInner {
+    max-width: 1400px;        /* ⬅ wider footer */
+    margin: 0 auto;
+    padding: 0 48px;          /* ⬅ equal left/right breathing room */
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr 1px 1fr;
+    gap: 48px;                /* ⬅ spread columns wider */
+    align-items: start;
+  }
+
+  .hhpFooterDivider {
+    display: none;
+  }
+
+  .hhpFooterText {
+    text-align: center;
+  }
+
+  .hhpFooterRight {
+    text-align: center;
+  }
+
+  .hhpSocialRow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    margin: 12px 0 18px;
+  }
+
+  .hhpFooterLinks {
+    align-items: center;
+  }
 }
